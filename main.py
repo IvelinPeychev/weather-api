@@ -17,5 +17,6 @@ def about(station, date):
     return {'station': station, 'date': date, 'temperature': temperature}
 
 
+# All flask apps runs on port 5000 by default, so if we have multiple apps running on the same time we should specify it
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
