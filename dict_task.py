@@ -1,7 +1,7 @@
 from flask import Flask, render_template
+import pandas as pd
 
 app = Flask(__name__)
-
 
 
 @app.route('/')
@@ -11,7 +11,8 @@ def home():
 
 @app.route('/api/v1/<word>')
 def dict_foo(word):
-    word1 = word.upper()
+    definition = pd.read_csv('dictionary.csv')
+    word1 = definition.loc[definition['word'] == word]['definition'].squeeze()
     return {'definition': word1, 'word': word}
 
 
